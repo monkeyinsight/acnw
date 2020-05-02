@@ -52,6 +52,11 @@ class Modal extends Component {
                     </div>
                     <div className="location">
                         <span className="tit">Location</span> {this.props.data.spawn}
+                        {this.props.data.size && (
+                            <div>
+                                <span className="tit">Size</span>{this.props.data.size}
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
