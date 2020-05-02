@@ -17,6 +17,10 @@ class Item extends Component {
                     collected: false
                 }
             }
+        } else {
+            this.state = {
+                collected: false
+            }
         }
     }
 
