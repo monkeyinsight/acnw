@@ -140,6 +140,8 @@ html, body {
     float: none;
     clear: both;
     margin: 20px;
+    width: 128px;
+    height: 128px;
 }
 
 .modal .time {
