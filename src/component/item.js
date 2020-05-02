@@ -71,7 +71,7 @@ class Item extends Component {
                 onClick={() => this.props.handler(this.props.item, this.handler.bind(this), this.checked.bind(this))}
             >
                 <div className="tooltip">
-                    <img src={"/images/" + this.props.item.image}/>
+                    <img src={"/images/" + this.props.item.image.replace('.png', '_small.png')}/>
                     <span className="tooltiptext">{this.props.item.title}</span>
                 </div>
             </div>
