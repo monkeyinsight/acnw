@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Switch extends Component {
     getHemisphere() {
-        return localStorage.getItem("hemisphere") == 'south';
+        return localStorage.getItem("hemisphere") === 'south';
     }
 
     render() {

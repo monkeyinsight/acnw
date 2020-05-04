@@ -4,6 +4,14 @@ import React, { Component } from 'react';
 const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 class Modal extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            checked: false
+        };
+    }
+
     check(e) {
         this.setState({
             checked: e.target.checked ? true : false
@@ -15,18 +23,16 @@ class Modal extends Component {
             return null;
         }
 
-        this.state = {
-            checked: this.props.checked()
-        };
+        this.props.checked();
 
         return (
             <div className="overlay">
                 <div className="modal">
-                    <a className="close" onClick={this.props.closeModal}></a>
+                    <span className="close" onClick={this.props.closeModal}></span>
                     <div className="image">
                         <div className="title"><div className="b">{this.props.data.title}</div></div>
                         <div className="clear"></div>
-                        <img src={'/images/' + this.props.data.image}/>
+                        <img src={'/images/' + this.props.data.image} alt={this.props.data.title}/>
                         <div className="switch-container">
                             <span className="tit">Catched</span>
                             <label className="switch">
@@ -43,7 +49,7 @@ class Modal extends Component {
                         <span className="tit">Seasonality</span>
                         <div className="cal">
                             {months.map((month, i) => {
-                                let classname = (this.props.data.months[this.props.hemisphere][i] ? 'fill' : '') + (i == new Date().getMonth() ? ' cur' : '');
+                                let classname = (this.props.data.months[this.props.hemisphere][i] ? 'fill' : '') + (i === new Date().getMonth() ? ' cur' : '');
                                 return (
                                     <div className={classname} key={month}>{month}</div>
                                 )
@@ -57,6 +63,9 @@ class Modal extends Component {
                                 <span className="tit">Size</span>{this.props.data.size}
                             </div>
                         )}
+                        <div>
+                            <span className="tit">Price</span> {this.props.data.price}
+                        </div>
                     </div>
                 </div>
             </div>

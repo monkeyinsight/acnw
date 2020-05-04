@@ -19,7 +19,7 @@ class Filter extends Component {
     handle(e) {
         let sel = e.target.getAttribute('data-key');
 
-        if (this.state.filter == sel) {
+        if (this.state.filter === sel) {
             sel = null;
         }
 
@@ -36,7 +36,7 @@ class Filter extends Component {
                 {months.map((month, i) => {
                     return (
                         <div
-                            className={this.state.filter == i ? 'sel' : ''}
+                            className={this.state.filter === i ? 'sel' : ''}
                             key={month}
                             data-key={i}
                             onClick={(e) => this.handle(e)}

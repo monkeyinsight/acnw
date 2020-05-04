@@ -41,7 +41,7 @@ class Item extends Component {
             catched.push(this.props.item.image);
         } else {
             for (let i = 0; i < catched.length; i++) {
-                if (catched[i] == this.props.item.image) {
+                if (catched[i] === this.props.item.image) {
                     catched.splice(i, 1);
                 }
             }
@@ -59,7 +59,7 @@ class Item extends Component {
         let o = false;
         if (this.props.filter != null) {
             if (this.props.item && this.props.item.months && this.props.hemisphere) {
-                if (this.props.item.months[this.props.hemisphere][this.props.filter] == false) {
+                if (this.props.item.months[this.props.hemisphere][this.props.filter] === false) {
                     o = true;
                 }
             }
@@ -71,7 +71,7 @@ class Item extends Component {
                 onClick={() => this.props.handler(this.props.item, this.handler.bind(this), this.checked.bind(this))}
             >
                 <div className="tooltip">
-                    <img src={"/images/" + this.props.item.image.replace('.png', '_small.png')}/>
+                    <img src={"/images/" + this.props.item.image.replace('.png', '_small.png')} alt={this.props.item.title}/>
                     <span className="tooltiptext">{this.props.item.title}</span>
                 </div>
             </div>
