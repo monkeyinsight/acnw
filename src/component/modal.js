@@ -23,7 +23,7 @@ class Modal extends Component {
             return null;
         }
 
-        this.props.checked();
+        this.state.checked = this.props.checked();
 
         return (
             <div className="overlay">
