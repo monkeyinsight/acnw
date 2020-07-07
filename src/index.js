@@ -78,6 +78,14 @@ class App extends React.Component {
                             hemisphere={this.state.hemisphere}
                         />
                     </div>
+                    <div label="Underwater">
+                        <List 
+                            data={data.underwater}
+                            handler={this.openModal}
+                            filter={this.state.filter}
+                            hemisphere={this.state.hemisphere}
+                        />
+                    </div>
                 </Tabs>
                 <Modal
                     show={this.state.isOpen}
