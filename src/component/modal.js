@@ -43,7 +43,7 @@ class Modal extends Component {
                     </div>
                     <div className="time">
                         <span className="tit">Active Hours</span><br/>
-                        {this.props.data.when[this.props.hemisphere]}
+                        {this.props.data.when[this.props.hemisphere]||this.props.data.when}
                     </div>
                     <div className="season">
                         <span className="tit">Seasonality</span>
