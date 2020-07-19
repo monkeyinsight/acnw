@@ -1,27 +1,29 @@
-var CACHE_NAME = 'my-site-cache-v1';
-var urlsToCache = [];
+var filesToCache = [
+  '.',
+];
+
+var staticCacheName = 'pages-cache';
 
 self.addEventListener('install', function(event) {
-    // Perform install steps
-    event.waitUntil(
-      caches.open(CACHE_NAME)
-        .then(function(cache) {
-          console.log('Opened cache');
-          return cache.addAll(urlsToCache);
-        })
-    );
-  });
+  event.waitUntil(
+    caches.open(staticCacheName)
+    .then(function(cache) {
+      return cache.addAll(filesToCache);
+    }).catch(function () {})
+  );
+});
 
-  self.addEventListener('fetch', function(event) {
-    event.respondWith(
-      caches.match(event.request)
-        .then(function(response) {
-          // Cache hit - return response
-          if (response) {
-            return response;
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.open(staticCacheName).then(function(cache) {
+      return cache.match(event.request).then(function (response) {
+        return response || fetch(event.request).then(function(response) {
+          if (!/ajax/.test(event.request)) {
+            cache.put(event.request, response.clone());
           }
-          return fetch(event.request);
-        }
-      )
-    );
-  });
+          return response;
+        }).catch(function () {});
+      }).catch(function () {});
+    })
+  );
+});
